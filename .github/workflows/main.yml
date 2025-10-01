@@ -1,0 +1,18 @@
+name: Deploy the github page
+
+on:
+  push:
+     branches:
+       - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-main@v3
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
